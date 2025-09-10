@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LogSign() {
+  const navigation = useNavigation()
   return (
     <View style={{ flex: 1 }}>
       {/* Background starts here */}
@@ -37,14 +39,14 @@ export default function LogSign() {
             resizeMode="contain"
             source={require("../../../images/welcome/logo.png")}
           />
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity onPress={()=>navigation.navigate('login')} style={styles.loginButton}>
             <Image
               style={styles.loginIcon}
               source={require("../../../images/welcome/arrow.png")}
             />
             <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={{...styles.loginButton,backgroundColor:'white',borderColor:'',borderWidth:1}}>
             <Image
               style={styles.loginIcon}
               source={require("../../../images/welcome/arrow.png")}

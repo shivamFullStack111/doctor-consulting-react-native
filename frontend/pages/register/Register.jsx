@@ -1,8 +1,9 @@
 import { View, Text, Image, Touchable, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { Button, TextInput } from "react-native-paper";
 
-const Welcome = () => {
+const Register = () => {
   const navigation = useNavigation()
   return (
     <View style={{ flex: 1 }}>
@@ -18,7 +19,7 @@ const Welcome = () => {
       >
         <Image
           style={{ height: 215, objectFit: "contain", width: "100%" }}
-          source={require("../../images/welcome/bg1.png")}
+          source={require("../../../images/welcome/bg1.png")}
         ></Image>
         <View style={{ width: "100%", alignItems: "flex-end", marginTop: 50 }}>
           <Image
@@ -28,7 +29,7 @@ const Welcome = () => {
               objectFit: "contain",
               alignItems: "flex-end",
             }}
-            source={require("../../images/welcome/bg3.png")}
+            source={require("../../../images/welcome/bg3.png")}
           ></Image>
         </View>
         <View
@@ -41,7 +42,7 @@ const Welcome = () => {
               objectFit: "contain",
               alignItems: "flex-end",
             }}
-            source={require("../../images/welcome/bg2.png")}
+            source={require("../../../images/welcome/bg2.png")}
           ></Image>
         </View>
       </View>
@@ -64,39 +65,38 @@ const Welcome = () => {
           <Text style={{ fontSize: 30, fontWeight: "600", color: "#595858" }}>
             WELCOME!
           </Text>
-          <Image
-            style={{
-              objectFit: "contain",
-              width: "100%",
-              height: 230,
-              marginLeft: 10,
-            }}
-            source={require("../../images/welcome/logo.png")}
-          ></Image>
-          <TouchableOpacity
-          onPress={()=>navigation.navigate('LogSign')}
-            style={{
-              backgroundColor: "#7FC1B9",
-              padding: 12,
-              paddingLeft: 20,
-              paddingRight: 20,
-              borderRadius: 200,
-              alignItems: "center",
-              flexDirection: "row",
-              gap: 5,
-              marginTop: 20,
-            }}
-          >
-            <Image
-              style={{ height: 20, width: 20 }}
-              source={require("../../images/welcome/icon.png")}
-            ></Image>
-            <Text>GET STARTED</Text>
-          </TouchableOpacity>
+
+          <View style={{ width: '100%', flexDirection: 'column' }}>
+            <TextInput
+
+              style={{ marginTop: 10, borderColor: '#7FC1B9' }}
+              label="Email"
+              value={'hello'}
+              activeOutlineColor="#7FC1B9"
+              // onChangeText={text => setEmail(text)}
+              mode="outlined"
+            />
+            <TextInput
+              style={{ marginTop: 10 }}
+              label="Password"
+              activeOutlineColor="#7FC1B9"
+
+              value={'hello'}
+              secureTextEntry={true}
+              // onChangeText={text => setEmail(text)}
+              mode="outlined"
+            />
+
+            <Button style={{ marginTop: 20, backgroundColor: '#7FC1B9' }} mode="contained" onPress={() => console.log('Pressed')}>
+              Submit
+            </Button>
+          </View>
         </View>
       </View>
+
+
     </View>
   );
 };
 
-export default Welcome;
+export default Register;
