@@ -1,10 +1,12 @@
 import { View, Text, Image, Touchable, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Button, TextInput } from "react-native-paper";
 
 const Login = () => {
   const navigation = useNavigation()
+  const [data,setdata]=useState({})
+  
   return (
     <View style={{ flex: 1 }}>
       {/* background start  */}
@@ -63,33 +65,40 @@ const Login = () => {
           }}
         >
           <Text style={{ fontSize: 30, fontWeight: "600", color: "#595858" }}>
-            WELCOME!
+            Sign In
           </Text>
 
           <View style={{ width: '100%', flexDirection: 'column' }}>
             <TextInput
-
               style={{ marginTop: 10, borderColor: '#7FC1B9' }}
               label="Email"
-              value={'hello'}
+              value={data?.email}
+              onChangeText={text => setdata(p=>({...p,email:text}))}
               activeOutlineColor="#7FC1B9"
-              // onChangeText={text => setEmail(text)}
               mode="outlined"
             />
             <TextInput
               style={{ marginTop: 10 }}
               label="Password"
               activeOutlineColor="#7FC1B9"
-
-              value={'hello'}
+              value={data?.password}
+              onChangeText={text => setdata(p=>({...p,password:text}))}
               secureTextEntry={true}
-              // onChangeText={text => setEmail(text)}
               mode="outlined"
             />
 
             <Button style={{ marginTop: 20, backgroundColor: '#7FC1B9' }} mode="contained" onPress={() => console.log('Pressed')}>
               Submit
             </Button>
+
+            <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
+              <Text style={{ fontSize: 16 }}>Not have an account?
+              </Text>
+              <TouchableOpacity onPress={()=>navigation.navigate('register')} >
+                <Text style={{ fontSize: 16, color: "blue", marginLeft: 5 }} >Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+
           </View>
         </View>
       </View>

@@ -46,7 +46,7 @@ export default function LogSign() {
             />
             <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{...styles.loginButton,backgroundColor:'white',borderColor:'',borderWidth:1}}>
+          <TouchableOpacity  onPress={()=>navigation.navigate('register')} style={{...styles.loginButton,backgroundColor:'white',borderColor:'',borderWidth:1}}>
             <Image
               style={styles.loginIcon}
               source={require("../../../images/welcome/arrow.png")}
